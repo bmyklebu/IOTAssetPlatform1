@@ -9,10 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.event.ActionEvent;
 
 import java.net.URL;
 import java.util.List;
@@ -62,7 +60,14 @@ public class UiController implements Initializable {
     @FXML
     private CheckBox cbAssetState;
 
+    @FXML
+    private void errorNoDataDeleted (){
+        Alert errorDelete = new Alert(Alert.AlertType.ERROR);
+        errorDelete.setTitle("Error");
+        errorDelete.setContentText("No data could be deleted");
+        errorDelete.showAndWait();
 
+    }
 
 
     /**
@@ -328,7 +333,7 @@ public class UiController implements Initializable {
         }
         updateListView();
     }
-    public void onClickDeleteProduct() {
+    public void onClickDeleteProduct(ActionEvent actionEvent) {
 
         int selectedIndex = lvAssets.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1){
@@ -336,7 +341,7 @@ public class UiController implements Initializable {
             saveFile();
             updateListView();
         }else{
-//TODO: Message: Pls select one
+            errorNoDataDeleted();
         }
 
     }
