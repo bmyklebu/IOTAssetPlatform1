@@ -32,7 +32,7 @@ public class UiController implements Initializable {
 
     //region 1. Decl. and Init Attribute
     @FXML
-    private ListView<Asset> lvCustomers;
+    private ListView<Asset> lvAssets;
 
     /**
      * In Spitzenklammern den Objekttyp angegben den die ComboBox anzeigt
@@ -49,7 +49,6 @@ public class UiController implements Initializable {
 
     @FXML
     private TextField txtAssetType;
-
 
     @FXML
     private TextField txtAssetMaxTemp;
@@ -132,7 +131,6 @@ public class UiController implements Initializable {
 
             resetCustomerDataTextFields();
 
-            //TODO updateListView
             updateListView();
         } else {
             //DEBUG
@@ -152,13 +150,13 @@ public class UiController implements Initializable {
 
         ObservableList<Asset> observableAssetList = FXCollections.observableList(listOfAllAssets);
 
-        this.lvCustomers.getItems().clear();
-        this.lvCustomers.setItems(observableAssetList);
+        this.lvAssets.getItems().clear();
+        this.lvAssets.setItems(observableAssetList);
 
-        this.lvCustomers.setOrientation(Orientation.VERTICAL);
+        this.lvAssets.setOrientation(Orientation.VERTICAL);
 
         LvCustomersCallback lvCustomersCallback = new LvCustomersCallback();
-        this.lvCustomers.setCellFactory(lvCustomersCallback);
+        this.lvAssets.setCellFactory(lvCustomersCallback);
 //TODO CellFactory
 //		this.lvCustomers.setCellFactory(new Callback<ListView<Asset>, ListCell<Asset>>() {
 //
@@ -167,7 +165,7 @@ public class UiController implements Initializable {
 //		});
 
         //TODO Listener der ListView
-        this.lvCustomers.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Asset>() {
+        this.lvAssets.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Asset>() {
             @Override
             public void changed(ObservableValue<? extends Asset> observableCustomers,
                                 Asset prevAsset, Asset currentAsset) {
@@ -313,6 +311,38 @@ public class UiController implements Initializable {
         this.txtAssetIP.setText("");
 
 
+    }
+
+    public void onClickChangeProduct( ) {
+
+        //gets the selected index value of dataset
+        int selected = lvAssets.getSelectionModel().getSelectedIndex();
+
+
+        Asset currentAsset = getCustomerDataFromUi();
+
+        if (currentAsset != null){
+            this.listOfAllAssets.set(selected, currentAsset);
+            saveFile();
+            resetCustomerDataTextFields();
+        }
+        updateListView();
+    }
+    public void onClickDeleteProduct() {
+
+        int selectedIndex = lvAssets.getSelectionModel().getSelectedIndex();
+        if (selectedIndex != -1){
+            this.listOfAllAssets.remove(selectedIndex);
+            saveFile();
+            updateListView();
+        }else{
+//TODO: Message: Pls select one
+        }
+
+    }
+
+    private void saveFile(){
+        CsvFileHandler.getInstance().saveCustomersToCsvFile(this.listOfAllAssets);
     }
 
 

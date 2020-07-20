@@ -12,7 +12,7 @@
             <HBox spacing="5">
                 <VBox alignment="TOP_LEFT" prefWidth="800" spacing="5">
                     <Label fx:id="lblAllCustomers" alignment="CENTER" minWidth="800" prefWidth="800" text="All Asset data" />
-                    <ListView fx:id="lvCustomers" minHeight="400" minWidth="800" prefHeight="400" prefWidth="800" />
+                    <ListView fx:id="lvAssets" minHeight="400" minWidth="800" prefHeight="400" prefWidth="800" />
                 </VBox>
                 <VBox alignment="BASELINE_RIGHT" minHeight="400" prefWidth="800" spacing="5">
 
@@ -37,6 +37,8 @@
                     </HBox>
 
                     <Button fx:id="btnSubmitCustomer" minWidth="525" prefWidth="525" onAction="#onClickSubmitCustomer" text="Save Asset data" />
+                    <Button fx:id="btnDeleteCustomer" minWidth="525" prefWidth="525" onAction="#onClickDeleteProduct" text="Delete Asset data" />
+                    <Button fx:id="btnChangeCustomer" minWidth="525" prefWidth="525" onAction="#onClickChangeProduct" text="Change Asset data" />
                 </VBox>
             </HBox>
         </TitledPane>
