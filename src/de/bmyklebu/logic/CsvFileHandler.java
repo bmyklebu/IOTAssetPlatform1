@@ -10,10 +10,10 @@ import java.util.List;
 public class CsvFileHandler {
 
     //region 0. Konstanten
-    private static final String FILE_PATH      = "src/de/bmyklebu/customers/";
+    private static final String FILE_PATH      = "src/de/bmyklebu/assets/";
     private static final String FILE_TYPE_CSV  = ".csv";
     private static final String FILE_TYPE_TXT  = ".txt";
-    private static final String FILE_NAME      = "/customers" + FILE_TYPE_CSV;
+    private static final String FILE_NAME      = "/assets" + FILE_TYPE_CSV;
     private static final String FULL_FILE_PATH = FILE_PATH + FILE_NAME;
     //endregion
 

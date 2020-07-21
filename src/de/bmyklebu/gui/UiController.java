@@ -1,5 +1,6 @@
 package de.bmyklebu.gui;
 
+import de.bmyklebu.logic.DatapointFileHandler;
 import de.bmyklebu.logic.CsvFileHandler;
 import de.bmyklebu.model.Asset;
 import javafx.beans.value.ChangeListener;
@@ -25,6 +26,7 @@ import static de.bmyklebu.settings.ApplicationTexts.USER_MSG_SAVED_SUCCESSFULLY;
  */
 public class UiController implements Initializable {
 
+
     //region 0. Konstanten
     //endregion
 
@@ -32,10 +34,6 @@ public class UiController implements Initializable {
     @FXML
     private ListView<Asset> lvAssets;
 
-    /**
-     * In Spitzenklammern den Objekttyp angegben den die ComboBox anzeigt
-     * sprich den Typ der Eintraege
-     */
     @FXML
     private ComboBox<String> cboPronoun;
 
@@ -68,7 +66,8 @@ public class UiController implements Initializable {
         errorDelete.showAndWait();
 
     }
-
+    @FXML
+    private Label txtDatapointValues;
 
     /**
      * Enthaelt alle Kunden die zur Laufzeit
@@ -100,13 +99,12 @@ public class UiController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //1. Kombobox befuellen
-
 
         //2. ListViewBefuellen
         updateListView();
     }
 
+    DatapointFileHandler datapoints = new DatapointFileHandler();
 
     //endreigon
 
@@ -144,7 +142,7 @@ public class UiController implements Initializable {
     }
     //endregion
 
-    //region Hilfsmethoden und Funktionen
+
 
     /**
      * TODO Update ListView befuellt die ListView
@@ -160,16 +158,9 @@ public class UiController implements Initializable {
 
         this.lvAssets.setOrientation(Orientation.VERTICAL);
 
-        LvCustomersCallback lvCustomersCallback = new LvCustomersCallback();
-        this.lvAssets.setCellFactory(lvCustomersCallback);
-//TODO CellFactory
-//		this.lvCustomers.setCellFactory(new Callback<ListView<Asset>, ListCell<Asset>>() {
-//
+        LvAssetsCallback lvAssetsCallback = new LvAssetsCallback();
+        this.lvAssets.setCellFactory(lvAssetsCallback);
 
-//			}
-//		});
-
-        //TODO Listener der ListView
         this.lvAssets.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Asset>() {
             @Override
             public void changed(ObservableValue<? extends Asset> observableCustomers,
@@ -178,16 +169,12 @@ public class UiController implements Initializable {
                 //Checken ob was genau selktiert ist und nur bei richtiger Selektierung weiter machen
                 if ((currentAsset != null) && (!currentAsset.equals(prevAsset))) {
 
-                    //TODO Anzeigen des aktuellen Kunden mit neuer erstellter Methode
                     fillCustomerDataInGui(currentAsset);
                 }
 
             }
         });
     }
-
-
-
 
     /**
      * Liest alle Kundendaten von der Ui (Konsole)
@@ -205,7 +192,6 @@ public class UiController implements Initializable {
         Asset assetFromUi = null;
         boolean  isUserInputValid = true;
 
-
         String strAssetID = this.txtAssetId.getText();
         String strAssetName  = this.txtAssetName.getText();
         String strAssetType = this.txtAssetType.getText();
@@ -213,8 +199,6 @@ public class UiController implements Initializable {
         String strAssetMinTemp = this.txtAssetMinTemp.getText();
         String strAssetIP = this.txtAssetIP.getText();
         String strAssetState = this.cbAssetState.getText();
-
-
 
         //place all values in an array for checking
         String[] strUserInput = {
@@ -247,23 +231,11 @@ public class UiController implements Initializable {
             //Alle gecheckten Eingabedaten per setter dem Kundenobjekt geben
             assetFromUi.setAssetID(strAssetID);
             assetFromUi.setAssetName(strAssetName);
-
-
             assetFromUi.setAssetType(strAssetType);
             assetFromUi.setAssetMaxTemp(strAssetMaxTemp);
             assetFromUi.setAssetMinTemp(strAssetMinTemp);
             assetFromUi.setAssetIp(strAssetIP);
             assetFromUi.setAssetState(Boolean.parseBoolean(strAssetState));
-
-
-
-
-
-
-
-
-
-
 
         } else {
             //Userhinweis ausgeben
@@ -280,11 +252,8 @@ public class UiController implements Initializable {
      */
     private void fillCustomerDataInGui(Asset assetToShowInGui) {
 
-
-
         this.txtAssetId.setText(assetToShowInGui.getAssetID());
         this.txtAssetName.setText(assetToShowInGui.getAssetName());
-
 
         this.txtAssetType.setText(assetToShowInGui.getAssetType());
         this.txtAssetMaxTemp.setText(assetToShowInGui.getAssetMaxTemp());
@@ -292,29 +261,21 @@ public class UiController implements Initializable {
         this.txtAssetMinTemp.setText(assetToShowInGui.getAssetMinTemp());
         this.txtAssetIP.setText(Boolean.toString(assetToShowInGui.getAssetState()));
 
-
     }
-
 
     /**
      * Alle Eingabefelder fuer Kundendaten
      * leeren
      */
     private void resetCustomerDataTextFields() {
-
-
         //Eingabefocus auf Anredefeld setzen
 
         this.txtAssetId.setText("");
         this.txtAssetName.setText("");
-
-
         this.txtAssetType.setText("");
-
         this.txtAssetMaxTemp.setText("");
         this.txtAssetMinTemp.setText("");
         this.txtAssetIP.setText("");
-
 
     }
 
@@ -322,8 +283,6 @@ public class UiController implements Initializable {
 
         //gets the selected index value of dataset
         int selected = lvAssets.getSelectionModel().getSelectedIndex();
-
-
         Asset currentAsset = getCustomerDataFromUi();
 
         if (currentAsset != null){
@@ -333,7 +292,8 @@ public class UiController implements Initializable {
         }
         updateListView();
     }
-    public void onClickDeleteProduct(ActionEvent actionEvent) {
+
+    public void onClickDeleteProduct() {
 
         int selectedIndex = lvAssets.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1){
@@ -343,11 +303,18 @@ public class UiController implements Initializable {
         }else{
             errorNoDataDeleted();
         }
-
     }
 
     private void saveFile(){
         CsvFileHandler.getInstance().saveCustomersToCsvFile(this.listOfAllAssets);
+    }
+
+    public void onClickCreateDatapoints(ActionEvent event) {
+        datapoints.createSimpleCsvFileWithParams(4,2,40);
+    }
+
+    public void displayDatapointValues(){
+        txtDatapointValues.setText(datapoints.simpleFileReader());
     }
 
 
