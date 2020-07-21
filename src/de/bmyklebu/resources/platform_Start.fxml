@@ -4,41 +4,59 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_LEFT" maxHeight="800.0" maxWidth="1620.0" minHeight="800" minWidth="1620.0" prefHeight="800.0" prefWidth="1620.0"
+<VBox alignment="TOP_LEFT" maxHeight="800.0" maxWidth="1620.0" minHeight="800" minWidth="1620.0" prefHeight="800.0"
+      prefWidth="1620.0"
       xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="de.bmyklebu.gui.UiController">
     <children>
         <TitledPane fx:id="tpCustomerdata" prefHeight="800.0" prefWidth="1600.0" text="Asset data">
             <HBox spacing="5">
                 <VBox alignment="TOP_LEFT" prefWidth="800" spacing="5">
-                    <Label fx:id="lblAllCustomers" alignment="CENTER" minWidth="800" prefWidth="800" text="All Asset data" />
-                    <ListView fx:id="lvAssets" minHeight="400" minWidth="800" prefHeight="400" prefWidth="800" />
+                    <Label fx:id="lblAllCustomers" alignment="CENTER" minWidth="800" prefWidth="800"
+                           text="All Asset data"/>
+                    <ListView fx:id="lvAssets" minHeight="400" minWidth="800" prefHeight="400" prefWidth="800"/>
                 </VBox>
                 <VBox alignment="BASELINE_RIGHT" minHeight="400" prefWidth="800" spacing="5">
 
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
 
-                        <TextField fx:id="txtAssetId" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset ID" />
-                        <TextField fx:id="txtAssetName" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset Name" />
+                        <TextField fx:id="txtAssetId" maxWidth="260.0" minWidth="260.0" prefWidth="260.0"
+                                   promptText="Asset ID"/>
+                        <TextField fx:id="txtAssetName" maxWidth="260.0" minWidth="260.0" prefWidth="260.0"
+                                   promptText="Asset Name"/>
                     </HBox>
 
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
-                        <TextField fx:id="txtAssetType" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset Type" />
+                        <TextField fx:id="txtAssetType" maxWidth="260.0" minWidth="260.0" prefWidth="260.0"
+                                   promptText="Asset Type"/>
 
-                        <TextField fx:id="txtAssetMaxTemp" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset max temp" />
+                        <TextField fx:id="txtAssetMaxTemp" maxWidth="260.0" minWidth="260.0" prefWidth="260.0"
+                                   promptText="Asset max temp"/>
                     </HBox>
 
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
-                        <TextField fx:id="txtAssetMinTemp" minWidth="260" prefWidth="260" promptText="Asset min temp" />
-                        <TextField fx:id="txtAssetIP" minWidth="260" prefWidth="260" promptText="Asset IP" />
+                        <TextField fx:id="txtAssetMinTemp" minWidth="260" prefWidth="260" promptText="Asset min temp"/>
+                        <TextField fx:id="txtAssetIP" minWidth="260" prefWidth="260" promptText="Asset IP"/>
                     </HBox>
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
-                        <CheckBox fx:id="cbAssetState" minWidth="260" prefWidth="260"  />
+                        <CheckBox fx:id="cbAssetState" minWidth="260" prefWidth="260"/>
+                    </HBox>
+                    <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
+                        <Button fx:id="btnSubmitCustomer" minWidth="200" prefWidth="200"
+                                onAction="#onClickSubmitCustomer" text="Save Asset data"/>
+
+
+
+                        <Button fx:id="btnDeleteCustomer" minWidth="200" prefWidth="200"
+                                onAction="#onClickDeleteProduct" text="Delete Asset data"/>
+
+                    <Button fx:id="btnChangeCustomer" minWidth="200" prefWidth="200" onAction="#onClickChangeProduct"
+                            text="Change Asset data"/>
+                    </HBox>
+                    <HBox>
+
                     </HBox>
 
-                    <Button fx:id="btnSubmitCustomer" minWidth="525" prefWidth="525" onAction="#onClickSubmitCustomer" text="Save Asset data" />
-                    <Button fx:id="btnDeleteCustomer" minWidth="525" prefWidth="525" onAction="#onClickDeleteProduct" text="Delete Asset data" />
-                    <Button fx:id="btnChangeCustomer" minWidth="525" prefWidth="525" onAction="#onClickChangeProduct" text="Change Asset data" />
                 </VBox>
             </HBox>
         </TitledPane>

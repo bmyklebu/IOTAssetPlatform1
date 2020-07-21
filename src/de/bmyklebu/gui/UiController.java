@@ -289,7 +289,7 @@ public class UiController implements Initializable {
         this.txtAssetType.setText(assetToShowInGui.getAssetType());
         this.txtAssetMaxTemp.setText(assetToShowInGui.getAssetMaxTemp());
 
-        this.txtAssetMinTemp.setText(assetToShowInGui.getAssetMinTemp().toString());
+        this.txtAssetMinTemp.setText(assetToShowInGui.getAssetMinTemp());
         this.txtAssetIP.setText(Boolean.toString(assetToShowInGui.getAssetState()));
 
 
