@@ -1,19 +1,25 @@
 package de.bmyklebu.logic;
 
-public class Aggregations extends DatapointFileHandler{
+public class Aggregations extends DatapointFileHandler {
 
 
-
-
-    private int getMaxDatapointTemperature(int h[]){
-        for (int i = 0; i < h.length; i++) {
-
+    private int getMaxDatapointTemperature(int[] iTempValues) {
+        int max = iTempValues[0];
+        for (int i = 0; i < iTempValues.length; i++) {
+            if (iTempValues[i] > max){
+                max = iTempValues[i];
+            }
         }
-    return -1;
+        return max;
     }
 
-    private int getMinDatapointTemperature(){
-
-    return -1;
+    private int getMinDatapointTemperature(int[] iTempValues) {
+        int imin = iTempValues[0];
+        for (int i = 0; i < iTempValues.length; i++) {
+            if (iTempValues[i] < imin){
+                imin = iTempValues[i];
+            }
+        }
+        return imin;
     }
 }
