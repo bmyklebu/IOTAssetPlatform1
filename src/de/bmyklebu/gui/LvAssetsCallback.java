@@ -1,6 +1,5 @@
 package de.bmyklebu.gui;
 
-
 import de.bmyklebu.model.Asset;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;

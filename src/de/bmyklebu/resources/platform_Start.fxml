@@ -34,9 +34,9 @@
                     </HBox>
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
 
-                        <Button fx:id="btnSubmitCustomer" minWidth="200" onAction="#onClickSubmitCustomer" prefWidth="200" text="Save Asset data" />
-                        <Button fx:id="btnDeleteCustomer" minWidth="200" onAction="#onClickDeleteProduct" prefWidth="200" text="Delete Asset data" />
-                        <Button fx:id="btnChangeCustomer" minWidth="200" onAction="#onClickChangeProduct" prefWidth="200" text="Change Asset data" />
+                        <Button fx:id="btnSubmitAsset" minWidth="200" onAction="#onClickSubmitAsset" prefWidth="200" text="Save Asset data" />
+                        <Button fx:id="btnDeleteCustomer" minWidth="200" onAction="#onClickDeleteAsset" prefWidth="200" text="Delete Asset data" />
+                        <Button fx:id="btnChangeCustomer" minWidth="200" onAction="#onClickChangeAsset" prefWidth="200" text="Change Asset data" />
 
                     </HBox>
                     <HBox>

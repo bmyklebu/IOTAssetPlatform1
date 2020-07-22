@@ -5,21 +5,17 @@ import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//import static de.bmyklebu.logic.ArrayListsMachineData.*;
-
 public class DatapointFileHandler {
     //region 0 constants
     private static final String FILE_PATH = "src/de/bmyklebu/files/";
     private static final String FILE_TYPE = ".csv";
     private static final String FILE_NAME = "bmyTest";
-
-
-    private static final String SEPERATOR = ";";
+    private static final String SEPARATOR = ";";
 
     //endregion
+    //region 1 init and declare
 
-    //region1 csv simple csv export
-    //
+    //declare folders
     private File myFileToSave;
     private File myFolderToSave;
 
@@ -28,17 +24,14 @@ public class DatapointFileHandler {
     private OutputStreamWriter osw;
     private BufferedWriter out;
 
-    //Input stuff for input
+    //declare stuff for input
     private FileInputStream fis;
     private InputStreamReader isr;
     private BufferedReader in;
 
-
     //endregion
 
     //region 2 methods
-
-
     public String simpleFileReader() {
         File myNewFolder;
         File myFileToRead;
@@ -58,21 +51,21 @@ public class DatapointFileHandler {
                 //creates an inputstream reader that reads the fls AND uses the charecterset utf 8
                 isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
 
-                //tbd
+                //buffered reader can now read the file using the information in isr
                 in = new BufferedReader(isr);
 
                 System.out.println(in);
 
-                //[E]nd [o]f [File]
                 boolean eof = false;
                 while (!eof) {
-                    //1. Zeile lesen
+                    //1. read lines
                     String strReadCsvLine = in.readLine();
 
                     if (strReadCsvLine == null) {
                         eof = true;
                     } else {
-                        strReturnValues+=strReadCsvLine+"\n";
+                        //read content of file and add new to strReturnValues
+                        strReturnValues += strReadCsvLine + "\n";
                     }
 
                 }
@@ -89,14 +82,14 @@ public class DatapointFileHandler {
             }
         }
 
-    return strReturnValues;
+        return strReturnValues;
     }
     //endregion
 
     /**
      * @param iRepetitions the number lines needed
      * @param iMachineNo   the machine number that is needed
-     * @param iTemperature the temperate that is needed
+     * @param iTemperature the max temperate that can be reached (values are randomly generated but may not exceed iTemperature)
      */
     public void createSimpleCsvFileWithParams(int iRepetitions, int iMachineNo, int iTemperature) {
         try {
@@ -120,20 +113,20 @@ public class DatapointFileHandler {
             //create instance of buffered writer
             out = new BufferedWriter(osw);
 
-            //create a date value for test datapoints
-            //create format to be used
+            //create format to be used in the date formatter
             SimpleDateFormat dateformat = new SimpleDateFormat("dd.MM.yyyy");
 
+            //format the date using the pattern that we have  defined
             String strDate = dateformat.format(new Date());
 
 
             //build data string and datasets here
             for (int i = 0; i < iRepetitions; i++) {
-                //generate random temperatures till temperature variable
+                //generate random temperatures till (but not exceeding) temperature variable  iTemperature
                 Double dblRandomTemperature = (Math.random() * iTemperature);
 
                 //data gets strung together here here
-                String strData = iMachineNo + SEPERATOR + strDate + SEPERATOR + dblRandomTemperature.intValue() + "\n";
+                String strData = iMachineNo + SEPARATOR + strDate + SEPARATOR + dblRandomTemperature.intValue() + "\n";
 
                 //data is written here
                 out.write(strData);

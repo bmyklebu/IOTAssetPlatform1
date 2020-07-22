@@ -15,7 +15,7 @@ package de.bmyklebu.model;
  */
 public class Asset extends de.rhistel.model.ABaseModel {
 
-    //region 0. Konstanten
+    //region 0 Constants
 
 
     private static final int SPLIT_INDEX_ASSET_ID = 0;
@@ -30,18 +30,14 @@ public class Asset extends de.rhistel.model.ABaseModel {
 
     //endregion
 
-    //region 1. Decl. and Init Attribute
-
-    //TODO strTitele wird zu EProun und das wird im Konsturktor und dem Getter und Setter geaendert.
-
+    //region 1 Decl. and Init variables
 
     private String strAssetID;
+
     private String strAssetName;
     private String strAssetType;
-
     private String strAssetMaxTemp;
     private String strAssetMinTemp;
-
 
     private String strAssetIp;
     private boolean bAssetState;
@@ -51,12 +47,11 @@ public class Asset extends de.rhistel.model.ABaseModel {
 
     //endregion
 
-    //region 2. Konstruktor mit genererien lassen mit alt + einfg / rechtsklick generate -> SELECT NONE
+    //region 2 Constructor
 
     /**
-     * Standardkonstuktor
-     * Zum direkten initalisieren
-     * aller Attribute der Klasse
+     * Standard Constuctor
+     * used to directly initialise attributes
      */
     public Asset() {
 
@@ -71,15 +66,11 @@ public class Asset extends de.rhistel.model.ABaseModel {
         this.strAssetIp = DEF_VALUE_STR;
         this.bAssetState = DEF_VALUE_BOOLEAN;
 
-
-
-
-
     }
 
     //endregion
 
-    //region 3. Getter und Setter generieren lassen mit Strg + - Einfg oder Rechtsklick->Generate
+    //region 3 Getter und Setter
 
 
     public String getAssetID() {
@@ -139,58 +130,20 @@ public class Asset extends de.rhistel.model.ABaseModel {
     }
 
     /**
-     * Gibt alle Attribiute inklusive der Adddresse
-     * als CSV-Zeile zurueck.<br>
-     * <p>
-     * Beispiel:<br>
-     * <br>
-     * <ol>
-     *
-     *         <ol>
-     *
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_ID} - {@link Asset#strAssetID}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_NAME} - {@link Asset#strAssetName}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_TYPE} - {@link Asset#strAssetType}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_MAX_TEMP} - {@link Asset#strAssetMaxTemp}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_MIN_TEMP} - {@link Asset#strAssetMinTemp}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_IP} - {@link Asset#strAssetIp}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_STATE} - {@link Asset#bAssetState}</li>
-     *
-     *     </ol>
-     *     </li>
-     *     <li>
-     *
-     *         <ol>
-     *
-     *             </ol>
-     * </ol>
-     * Attribute:  strTitle;strFirstName;strLastName;strBday;iAge;iSex;dblHeight;dblWeight;strPhoneNr;strEmail<br>
-     * <p>
-     * Splitindex:  0                         1                   2              3<br>
-     * Attribute:  #address.getStreet(),address.getHouseNr(),address.getZip(),address.getCity()<br>
-     * <br>
-     * Es sind in der {@link Asset#setAllAttributesFromCsvLine(String)}drei Splits durch zufuerren das:
-     * <br>
-     * <ol>
-     * <li>Split der Hauptwerte hier in der Klasse {@link Asset} nach dem # dieses trennt Address und Kundenwerte.</li>
-     * <li>plit der Kundenwerte hier in der Klasse {@link Asset} nach dem ;</li>
-     * </ol>
-     *
-     * @return strCsvLine : {@link String} : CSV-Line
+     * get all attributes from csv as a line
+     * returns a single line splitt by a data splitter ";"
+     * @return returns a csv line
      */
     @Override
     public String getAllAttributesAsCsvLine() {
         String strCsvLine = "";
 
-
-
         strCsvLine += this.strAssetID + DATA_ATTRIBUTE_SPLITTER;
+
         strCsvLine += this.strAssetName + DATA_ATTRIBUTE_SPLITTER;
         strCsvLine += this.strAssetType + DATA_ATTRIBUTE_SPLITTER;
-
         strCsvLine += this.strAssetMaxTemp + DATA_ATTRIBUTE_SPLITTER;
         strCsvLine += this.strAssetMinTemp + DATA_ATTRIBUTE_SPLITTER;
-
         strCsvLine += this.strAssetIp + DATA_ATTRIBUTE_SPLITTER;
         strCsvLine += this.bAssetState + DATA_ATTRIBUTE_SPLITTER + "\n";
 
@@ -235,15 +188,19 @@ public class Asset extends de.rhistel.model.ABaseModel {
      * <li>plit der Kundenwerte hier in der Klasse {@link Asset} nach dem ;</li>
      * <li>Split
      */
+    /**
+     *
+     * @param strCsvLine : {@link String} : CSV-Zeile der konkret abgleiteten Kindklasse die alle Attribute
+     * @throws Exception
+     */
     @Override
     public void setAllAttributesFromCsvLine(String strCsvLine) throws Exception {
 
 
-        //3. Kundendaten splitten
+        //Split Asset data
         String[] strSplitArrayCustomerData = strCsvLine.split(DATA_ATTRIBUTE_SPLITTER);
 
-        //4. Kundendaten setzen
-
+        //set Asset data from read line to class variables
         this.strAssetID = strSplitArrayCustomerData[SPLIT_INDEX_ASSET_ID];
         this.strAssetName = strSplitArrayCustomerData[SPLIT_INDEX_ASSET_NAME];
         this.strAssetType = strSplitArrayCustomerData[SPLIT_INDEX_ASSET_TYPE];
@@ -254,12 +211,6 @@ public class Asset extends de.rhistel.model.ABaseModel {
         this.strAssetIp = strSplitArrayCustomerData[SPLIT_INDEX_ASSET_IP];
         this.bAssetState = Boolean.parseBoolean(strSplitArrayCustomerData[SPLIT_INDEX_ASSET_STATE]);
 
-
-
-
-        //5. Address Daten splitten und setzen lassen
-        //this.customerAddress.setAllAttributesFromCsvLine(strCsvLineCustomerAddressData);
-
     }
 
 
@@ -267,7 +218,7 @@ public class Asset extends de.rhistel.model.ABaseModel {
 
     //endregion
 
-    //region 4. toString() Funktionen generieren lassen mit Strg + Einfg oder Rechtsklick->Generate
+    //region 4 toString()
 
 
     @Override

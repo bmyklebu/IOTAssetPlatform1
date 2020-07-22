@@ -1,58 +1,29 @@
 package de.bmyklebu.settings;
 
-import de.bmyklebu.logic.CmdController;
-
-import static de.bmyklebu.settings.UserCommands.*;
 
 /**
  * Enthaelt alle Programmtexte
  */
 public class ApplicationTexts {
 
-    //region 1 Allgemeine Konstanten / Texte
+    //region 0 General messages and texts
 
 
 
 
-    //endregion
-
-    //region 3 Kundenverwaltungsmenu
-
-
-
-    //endregion
-
-    //region 4. Kundendaten Eingabeaufforderungstexte
-
-
-
-
-    //endregion
-
-    //region 5 BMI Text
-
-
-
-
-
-    //region 5. UserMessages
-
-
-    //region 3. Usernachrichten
     public static final String USER_MSG_PREFIX = "\n<<\t";
     public static final String USER_MSG_SUFFIX = "\t>>\n";
+    public static final String USER_MSG_SAVE_SUCCESS = "save successful";
+    public static final String USER_MSG_SAVE_FAILURE = "save unsuccessful";
 
 
 
     public static final String USER_MSG_PLEASE_ENTER_EVERYTHING = USER_MSG_PREFIX
-            + "Bitte alles ausfüllen"
+            + "Please complete the fields"
             + USER_MSG_SUFFIX;
 
 
 
-    public static final String USER_MSG_SAVED_SUCCESSFULLY   = USER_MSG_PREFIX
-            + "Erfolgreich gespeichert"
-            + USER_MSG_SUFFIX;
 
     //endregion
 
@@ -63,7 +34,7 @@ public class ApplicationTexts {
     //region 5. Privater Konstruktor
 
     /**
-     * Standkonstruktor
+     * Standard Constructor
      */
     private ApplicationTexts() {
         //Nichts zun tun ausser privat zu sein, damit kei Objekter ausserhalb generiert werden kann.
