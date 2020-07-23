@@ -15,7 +15,7 @@ public class ApplicationTexts {
     public static final String USER_MSG_SUFFIX = "\t>>\n";
     public static final String USER_MSG_SAVE_SUCCESS = "save successful";
     public static final String USER_MSG_SAVE_FAILURE = "save unsuccessful";
-
+    //public static final String DEF_VALUE_STR = "no valaue yet";
 
 
     public static final String USER_MSG_PLEASE_ENTER_EVERYTHING = USER_MSG_PREFIX

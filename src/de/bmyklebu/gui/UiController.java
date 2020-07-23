@@ -108,7 +108,7 @@ public class UiController implements Initializable {
     public void onClickSubmitAsset() {
 
         //reads all asset data in case of failure it returns null
-        Asset assetFromUi = this.getCustomerDataFromUi();
+        Asset assetFromUi = this.getAssetDataFromUi();
 
 
         //checks if all data is correct (not null)
@@ -183,7 +183,7 @@ public class UiController implements Initializable {
      *
      * when entries <b>are not correct</b> return <b> >null< </b>.
      */
-    private Asset getCustomerDataFromUi() {
+    private Asset getAssetDataFromUi() {
         //Decl and Init
         Asset assetFromUi = null;
         boolean isUserInputValid = true;
@@ -256,7 +256,7 @@ public class UiController implements Initializable {
         this.txtAssetMaxTemp.setText(assetToShowInGui.getAssetMaxTemp());
 
         this.txtAssetMinTemp.setText(assetToShowInGui.getAssetMinTemp());
-        this.txtAssetIP.setText(Boolean.toString(assetToShowInGui.getAssetState()));
+        this.txtAssetIP.setText(assetToShowInGui.getAssetIp());
 
     }
 
@@ -281,7 +281,7 @@ public class UiController implements Initializable {
 
         //gets the selected index value of dataset
         int selected = lvAssets.getSelectionModel().getSelectedIndex();
-        Asset currentAsset = getCustomerDataFromUi();
+        Asset currentAsset = getAssetDataFromUi();
 
         if (currentAsset != null) {
             this.listOfAllAssets.set(selected, currentAsset);
@@ -313,7 +313,7 @@ public class UiController implements Initializable {
 
     /**
      * this method creates datapoints (mainly for test purposes)
-     * and is called within the UI, it further calls the actual create datapoint method
+     * and is called within the UI, it further calls the actual create Datapoint method
      */
     public void onClickCreateDatapoints() {
         dataPoints.createSimpleCsvFileWithParams(4, 2, 40);
@@ -323,9 +323,9 @@ public class UiController implements Initializable {
      * this method displays the received datapoints for an asset
      */
     public void displayDatapointValues() {
-        txtDatapointValues.setText(dataPoints.simpleFileReader());
-    }
 
+        txtDatapointValues.setText(dataPoints.simpleFileReaderBMY(getAssetDataFromUi().getAssetID()));
+    }
 
     //endregion
 }

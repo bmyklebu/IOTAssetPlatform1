@@ -13,7 +13,7 @@ package de.bmyklebu.model;
  * um Daten komfortabel von Programmteil A zu
  * Programmteil B zu schieben.
  */
-public class Asset extends de.rhistel.model.ABaseModel {
+public class Asset extends de.bmyklebu.model.ABaseModel {
 
     //region 0 Constants
 
@@ -71,8 +71,6 @@ public class Asset extends de.rhistel.model.ABaseModel {
     //endregion
 
     //region 3 Getter und Setter
-
-
     public String getAssetID() {
         return strAssetID;
     }
@@ -147,47 +145,10 @@ public class Asset extends de.rhistel.model.ABaseModel {
         strCsvLine += this.strAssetIp + DATA_ATTRIBUTE_SPLITTER;
         strCsvLine += this.bAssetState + DATA_ATTRIBUTE_SPLITTER + "\n";
 
-
-
         return strCsvLine;
     }
 
-    /**
-     * Setzt alle Attribiute inklusive der Adddresse
-     * basierend auf der in {@link Asset#getAllAttributesAsCsvLine()}
-     * generierten CSV-Zeile.
-     * <p>
-     * <p>
-     * Beispiel:<br>
-     * <br>
-     * <ol>
-     *
-     *         <ol>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_ID} - {@link Asset#strAssetID}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_NAME} - {@link Asset#strAssetName}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_TYPE} - {@link Asset#strAssetType}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_MAX_TEMP} - {@link Asset#strAssetMaxTemp}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_MIN_TEMP} - {@link Asset#strAssetMinTemp}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_IP} - {@link Asset#strAssetIp}</li>
-     *     <li>{@link Asset#SPLIT_INDEX_ASSET_STATE} - {@link Asset#bAssetState}</li>
-     *
-     *     </ol>
-     *     </li>
-     *     <li>
-     *
-     * </ol>
-     * Attribute:  strTitle;strFirstName;strLastName;strBday;iAge;iSex;dblHeight;dblWeight;strPhoneNr;strEmail<br>
-     * <p>
-     * Splitindex:  0                         1                   2              3<br>
-     * Attribute:  #address.getStreet(),address.getHouseNr(),address.getZip(),address.getCity()<br>
-     * <br>
-     * Es sind in der {@link Asset#setAllAttributesFromCsvLine(String)}drei Splits durch zufuerren das:
-     * <br>
-     * <ol>
-     * <li>Split der Hauptwerte hier in der Klasse {@link Asset} nach dem # dieses trennt Address und Kundenwerte.</li>
-     * <li>plit der Kundenwerte hier in der Klasse {@link Asset} nach dem ;</li>
-     * <li>Split
-     */
+
     /**
      *
      * @param strCsvLine : {@link String} : CSV-Zeile der konkret abgleiteten Kindklasse die alle Attribute

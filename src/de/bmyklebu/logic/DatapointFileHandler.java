@@ -32,7 +32,70 @@ public class DatapointFileHandler {
     //endregion
 
     //region 2 methods
-    public String simpleFileReader() {
+//    public String simpleFileReader() {
+//        File myNewFolder;
+//        File myFileToRead;
+//
+//        String strReturnValues = "";
+//
+//        myFileToRead = new File(FILE_PATH + FILE_NAME + FILE_TYPE);
+//
+//        try {
+//            //define file instance to readmyFileToRead = new File(myNewFolder.getAbsolutePath() + FILE_NAME);
+//
+//            //is the file to read there?
+//            if (myFileToRead.exists()) {
+//                //open connecting stream to file object (myFileToRead)
+//                fis = new FileInputStream(myFileToRead);
+//
+//                //creates an inputstream reader that reads the fls AND uses the charecterset utf 8
+//                isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
+//
+//                //buffered reader can now read the file using the information in isr
+//                in = new BufferedReader(isr);
+//
+//                System.out.println(in);
+//
+//                boolean eof = false;
+//                while (!eof) {
+//                    //1. read lines
+//                    String strReadCsvLine = in.readLine();
+//                    //String compare = strReadCsvLine.substring(0,1);
+//
+//                    //System.out.println(compare);
+//                    if (strReadCsvLine == null) {
+//                        eof = true;
+//                    } else {
+//                        String compare = strReadCsvLine.substring(0,1);
+//                        //compare with static value TODO change to param value
+//                        if (compare.equals("2")){
+//
+//                        }else{
+//
+//                        }
+//                        System.out.println(compare);
+//                        //read content of file and add new to strReturnValues
+//                        strReturnValues += strReadCsvLine + "\n";
+//                    }
+//
+//                }
+//
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                in.close();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        return strReturnValues;
+//    }
+
+    public String simpleFileReaderBMY(String paramAssetID ) {
         File myNewFolder;
         File myFileToRead;
 
@@ -41,9 +104,9 @@ public class DatapointFileHandler {
         myFileToRead = new File(FILE_PATH + FILE_NAME + FILE_TYPE);
 
         try {
-            //define file instance to readmyFileToRead = new File(myNewFolder.getAbsolutePath() + FILE_NAME);
+            //define file instance to readmyFileToRead
 
-            //is the file to read there?
+            //checks if there is a file to read there
             if (myFileToRead.exists()) {
                 //open connecting stream to file object (myFileToRead)
                 fis = new FileInputStream(myFileToRead);
@@ -58,14 +121,20 @@ public class DatapointFileHandler {
 
                 boolean eof = false;
                 while (!eof) {
-                    //1. read lines
+                    //read lines
                     String strReadCsvLine = in.readLine();
 
                     if (strReadCsvLine == null) {
                         eof = true;
                     } else {
-                        //read content of file and add new to strReturnValues
-                        strReturnValues += strReadCsvLine + "\n";
+                        String compare = strReadCsvLine.substring(0,1);
+                        //compare AssetID in CSV file line to AssetId that is selected
+                        if (compare.equals(paramAssetID)){
+                            strReturnValues += strReadCsvLine + "\n";
+                        }else{
+                            strReturnValues = "no Datapoints found";
+                        }
+
                     }
 
                 }
@@ -95,7 +164,6 @@ public class DatapointFileHandler {
         try {
             //Creates new instance of file --> converts file to abstract file name
             myFolderToSave = new File(FILE_PATH);
-
 
             //define folder
             if (!myFolderToSave.exists()) {

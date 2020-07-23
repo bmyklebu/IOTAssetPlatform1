@@ -42,6 +42,7 @@ public abstract class ABaseModel {
      * zu Modleklasse, wenn auch teilweise minimal. unterscheidt ist
      * hier das Schluesselwort abstract gewaehlt worden, und eine konkrete
      * Implementierung soll hier in dieser Klasse nicht stattfinden.
+     * creates a definition
      *
      * @param strCsvLine : {@link String} : CSV-Zeile der konkret abgleiteten Kindklasse die alle Attribute
      *                   setzt
