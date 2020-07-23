@@ -32,68 +32,6 @@ public class DatapointFileHandler {
     //endregion
 
     //region 2 methods
-//    public String simpleFileReader() {
-//        File myNewFolder;
-//        File myFileToRead;
-//
-//        String strReturnValues = "";
-//
-//        myFileToRead = new File(FILE_PATH + FILE_NAME + FILE_TYPE);
-//
-//        try {
-//            //define file instance to readmyFileToRead = new File(myNewFolder.getAbsolutePath() + FILE_NAME);
-//
-//            //is the file to read there?
-//            if (myFileToRead.exists()) {
-//                //open connecting stream to file object (myFileToRead)
-//                fis = new FileInputStream(myFileToRead);
-//
-//                //creates an inputstream reader that reads the fls AND uses the charecterset utf 8
-//                isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
-//
-//                //buffered reader can now read the file using the information in isr
-//                in = new BufferedReader(isr);
-//
-//                System.out.println(in);
-//
-//                boolean eof = false;
-//                while (!eof) {
-//                    //1. read lines
-//                    String strReadCsvLine = in.readLine();
-//                    //String compare = strReadCsvLine.substring(0,1);
-//
-//                    //System.out.println(compare);
-//                    if (strReadCsvLine == null) {
-//                        eof = true;
-//                    } else {
-//                        String compare = strReadCsvLine.substring(0,1);
-//                        //compare with static value TODO change to param value
-//                        if (compare.equals("2")){
-//
-//                        }else{
-//
-//                        }
-//                        System.out.println(compare);
-//                        //read content of file and add new to strReturnValues
-//                        strReturnValues += strReadCsvLine + "\n";
-//                    }
-//
-//                }
-//
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                in.close();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        return strReturnValues;
-//    }
 
     public String simpleFileReaderBMY(String paramAssetID ) {
         File myNewFolder;
@@ -118,6 +56,7 @@ public class DatapointFileHandler {
                 in = new BufferedReader(isr);
 
                 System.out.println(in);
+                int iStop = -1;
 
                 boolean eof = false;
                 while (!eof) {
@@ -126,12 +65,15 @@ public class DatapointFileHandler {
 
                     if (strReadCsvLine == null) {
                         eof = true;
+
                     } else {
-                        String compare = strReadCsvLine.substring(0,1);
+                        String strComparisonID = strReadCsvLine.substring(0,1);
                         //compare AssetID in CSV file line to AssetId that is selected
-                        if (compare.equals(paramAssetID)){
+                        if (strComparisonID.equals(paramAssetID)){
                             strReturnValues += strReadCsvLine + "\n";
+                            iStop  = 1;
                         }else{
+                            if(iStop != 1)
                             strReturnValues = "no Datapoints found";
                         }
 
@@ -169,6 +111,7 @@ public class DatapointFileHandler {
             if (!myFolderToSave.exists()) {
                 myFolderToSave.mkdir();
             }
+
             //define file with path , name and suffix
             myFileToSave = new File(FILE_PATH + FILE_NAME + FILE_TYPE);
 
@@ -187,7 +130,6 @@ public class DatapointFileHandler {
             //format the date using the pattern that we have  defined
             String strDate = dateformat.format(new Date());
 
-
             //build data string and datasets here
             for (int i = 0; i < iRepetitions; i++) {
                 //generate random temperatures till (but not exceeding) temperature variable  iTemperature
@@ -198,8 +140,10 @@ public class DatapointFileHandler {
 
                 //data is written here
                 out.write(strData);
-            }
+                //output if successful
 
+            }
+            System.out.println(iRepetitions+ " test dataponts created for Asset: "+iMachineNo);
 
         } catch (Exception e) {
             e.getStackTrace();

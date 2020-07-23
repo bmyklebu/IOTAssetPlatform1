@@ -29,19 +29,16 @@
                         <TextField fx:id="txtAssetIP" minWidth="260" prefWidth="260" promptText="Asset IP" />
                     </HBox>
 
-                    <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
-                        <CheckBox fx:id="cbAssetState" minWidth="260" prefWidth="260" />
-                    </HBox>
-                    <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
 
-                        <Button fx:id="btnSubmitAsset" minWidth="200" onAction="#onClickSubmitAsset" prefWidth="200" text="Save Asset data" />
-                        <Button fx:id="btnDeleteCustomer" minWidth="200" onAction="#onClickDeleteAsset" prefWidth="200" text="Delete Asset data" />
-                        <Button fx:id="btnChangeCustomer" minWidth="200" onAction="#onClickChangeAsset" prefWidth="200" text="Change Asset data" />
-
+                    <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
+                        <Button fx:id="btnSubmitAsset" minWidth="150" onAction="#onClickSubmitAsset" prefWidth="150" text="Save Asset data" />
+                        <Button fx:id="btnDeleteCustomer" minWidth="150" onAction="#onClickDeleteAsset" prefWidth="150" text="Delete Asset data" />
+                        <Button fx:id="btnChangeCustomer" minWidth="150" onAction="#onClickChangeAsset" prefWidth="150" text="Change Asset data" />
+                        <Button fx:id="btnShowDatapointValues" minWidth="150" onAction="#displayDatapointValues" prefWidth="150" text="show datapoint values" />
                     </HBox>
-                    <HBox>
-                        <Button fx:id="btnShowDatapointValues" minWidth="200" onAction="#displayDatapointValues" prefWidth="200" text="show datapoint values" />
-                        <Label text="values here" fx:id="txtDatapointValues" minHeight="200" minWidth="200"/>
+
+                    <HBox alignment="CENTER" prefWidth="800" minWidth="800" prefHeight="400" minHeight="400" spacing="5">
+                        <Label text="values here" fx:id="txtDatapointValues" minHeight="400" minWidth="400"/>
                     </HBox>
 
 
@@ -49,11 +46,11 @@
             </HBox>
         </TitledPane>
 
-        <TitledPane>
-            <VBox>
+        <TitledPane text="Generate Test Data points">
+            <VBox alignment="BASELINE_RIGHT" minHeight="400" prefWidth="800" spacing="5">
                 <HBox>
-                    <TextField fx:id="txtAssetTestGenerator" minWidth="260" prefWidth="260" promptText="Enter Asset ID" />
-
+                    <TextField fx:id="txtAssetIDTestGenerator" minWidth="150" prefWidth="150" promptText="Enter Asset ID" />
+                    <TextField fx:id="txtAssetMaxTempTestGenerator" minWidth="150" prefWidth="150" promptText="Enter Max Temp limit" />
                     <Button fx:id="btnCreateDatapoint" minWidth="200" onAction="#onClickCreateDatapoints" prefWidth="200" text="Create Test Datapoints" />
                 </HBox>
             </VBox>

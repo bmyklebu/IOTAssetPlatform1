@@ -26,7 +26,6 @@ public class Asset extends de.bmyklebu.model.ABaseModel {
     private static final int SPLIT_INDEX_ASSET_MIN_TEMP = 4;
 
     private static final int SPLIT_INDEX_ASSET_IP = 5;
-    private static final int SPLIT_INDEX_ASSET_STATE = 6;
 
     //endregion
 
@@ -40,7 +39,7 @@ public class Asset extends de.bmyklebu.model.ABaseModel {
     private String strAssetMinTemp;
 
     private String strAssetIp;
-    private boolean bAssetState;
+
 
 
 
@@ -64,7 +63,7 @@ public class Asset extends de.bmyklebu.model.ABaseModel {
         this.strAssetMinTemp = DEF_VALUE_STR;
 
         this.strAssetIp = DEF_VALUE_STR;
-        this.bAssetState = DEF_VALUE_BOOLEAN;
+
 
     }
 
@@ -119,13 +118,6 @@ public class Asset extends de.bmyklebu.model.ABaseModel {
         this.strAssetIp = strAssetIp;
     }
 
-    public boolean getAssetState() {
-        return bAssetState;
-    }
-
-    public void setAssetState(boolean bAssetState) {
-        this.bAssetState = bAssetState;
-    }
 
     /**
      * get all attributes from csv as a line
@@ -142,8 +134,8 @@ public class Asset extends de.bmyklebu.model.ABaseModel {
         strCsvLine += this.strAssetType + DATA_ATTRIBUTE_SPLITTER;
         strCsvLine += this.strAssetMaxTemp + DATA_ATTRIBUTE_SPLITTER;
         strCsvLine += this.strAssetMinTemp + DATA_ATTRIBUTE_SPLITTER;
-        strCsvLine += this.strAssetIp + DATA_ATTRIBUTE_SPLITTER;
-        strCsvLine += this.bAssetState + DATA_ATTRIBUTE_SPLITTER + "\n";
+        strCsvLine += this.strAssetIp + DATA_ATTRIBUTE_SPLITTER+ "\n";
+
 
         return strCsvLine;
     }
@@ -170,7 +162,6 @@ public class Asset extends de.bmyklebu.model.ABaseModel {
         this.strAssetMinTemp = strSplitArrayCustomerData[SPLIT_INDEX_ASSET_MIN_TEMP];
 
         this.strAssetIp = strSplitArrayCustomerData[SPLIT_INDEX_ASSET_IP];
-        this.bAssetState = Boolean.parseBoolean(strSplitArrayCustomerData[SPLIT_INDEX_ASSET_STATE]);
 
     }
 
@@ -191,7 +182,6 @@ public class Asset extends de.bmyklebu.model.ABaseModel {
                 ", iAssetMaxTemp=" + strAssetMaxTemp +'\'' +
                 ", iAssetMinTemp=" + strAssetMinTemp +'\'' +
                 ", strAssetIp='" + strAssetIp + '\'' +
-                ", bAssetState=" + bAssetState +'\'' +
                 '}';
     }
 

@@ -12,9 +12,7 @@ public class CsvFileHandler {
     //region 0. Constants
     private static final String FILE_PATH = "src/de/bmyklebu/assets/";
     private static final String FILE_TYPE_CSV = ".csv";
-    //private static final String FILE_TYPE_TXT  = ".txt";
     private static final String FILE_NAME = "/assets" + FILE_TYPE_CSV;
-    //private static final String FULL_FILE_PATH = FILE_PATH + FILE_NAME;
     //endregion
 
     //region 1.  Decl. and Init Attribute
@@ -95,7 +93,6 @@ public class CsvFileHandler {
                 out.write(c.getAllAttributesAsCsvLine());
             }
 
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -140,10 +137,10 @@ public class CsvFileHandler {
 
         try {
 
-            //Neuer Ordner definieren
+            //define folder
             myNewFolder = new File(FILE_PATH);
 
-            //1.) Neue Datei definieren
+            //define new file
             myFileToRead = new File(myNewFolder.getAbsolutePath() + FILE_NAME);
 
             if (myFileToRead.exists()) {
@@ -164,7 +161,7 @@ public class CsvFileHandler {
                     //read the content/line of in
                     String strReadCsvLine = in.readLine();
 
-                    //2.check if we have reached the end of the file
+                    //check if we have reached the end of the file
                     if (strReadCsvLine == null) {
                         eof = true;
                     } else {

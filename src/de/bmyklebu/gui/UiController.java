@@ -26,6 +26,7 @@ import static de.bmyklebu.settings.ApplicationTexts.*;
 public class UiController implements Initializable {
 
 
+
     //region 0. Constants
     //endregion
 
@@ -50,7 +51,10 @@ public class UiController implements Initializable {
     private CheckBox cbAssetState;
     @FXML
     private Label txtDatapointValues;
-
+    @FXML
+    public TextField txtAssetIDTestGenerator;
+    @FXML
+    public TextField txtAssetMaxTempTestGenerator;
     /**
      * Contains all Assets that are generated during runtime
      * in form of an Asset list
@@ -110,7 +114,6 @@ public class UiController implements Initializable {
         //reads all asset data in case of failure it returns null
         Asset assetFromUi = this.getAssetDataFromUi();
 
-
         //checks if all data is correct (not null)
         if (assetFromUi != null) {
 
@@ -132,7 +135,6 @@ public class UiController implements Initializable {
         }
     }
     //endregion
-
 
     private void updateListView() {
         //listOfAllAssets in this class gets values from  the CSVFileHandler using method readCustomersFromFile
@@ -195,7 +197,7 @@ public class UiController implements Initializable {
         String strAssetMaxTemp = this.txtAssetMaxTemp.getText();
         String strAssetMinTemp = this.txtAssetMinTemp.getText();
         String strAssetIP = this.txtAssetIP.getText();
-        String strAssetState = this.cbAssetState.getText();
+
 
         //place all values in an array for checking
         String[] strUserInput = {
@@ -231,7 +233,6 @@ public class UiController implements Initializable {
             assetFromUi.setAssetMaxTemp(strAssetMaxTemp);
             assetFromUi.setAssetMinTemp(strAssetMinTemp);
             assetFromUi.setAssetIp(strAssetIP);
-            assetFromUi.setAssetState(Boolean.parseBoolean(strAssetState));
 
         } else {
             //User message when fields not filled out correctly
@@ -314,16 +315,21 @@ public class UiController implements Initializable {
     /**
      * this method creates datapoints (mainly for test purposes)
      * and is called within the UI, it further calls the actual create Datapoint method
+     *
      */
     public void onClickCreateDatapoints() {
-        dataPoints.createSimpleCsvFileWithParams(4, 2, 40);
+        //prepare parameters
+        int iMaxTempRange =Integer.parseInt(txtAssetMaxTempTestGenerator.getCharacters().toString());
+        int iTestMachineID = Integer.parseInt(txtAssetIDTestGenerator.getCharacters().toString());
+
+        dataPoints.createSimpleCsvFileWithParams(3,iTestMachineID,iMaxTempRange);
     }
 
     /**
      * this method displays the received datapoints for an asset
      */
     public void displayDatapointValues() {
-
+    //call to display values
         txtDatapointValues.setText(dataPoints.simpleFileReaderBMY(getAssetDataFromUi().getAssetID()));
     }
 
