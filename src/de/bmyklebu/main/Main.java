@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/platform_Start.fxml"));
         primaryStage.setTitle("IOT Data platform");
-        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setScene(new Scene(root, 700, 700));
         primaryStage.show();
     }
 

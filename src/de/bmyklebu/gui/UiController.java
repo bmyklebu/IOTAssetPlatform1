@@ -120,10 +120,10 @@ public class UiController implements Initializable {
             //add a new asset to Asset list
             this.listOfAllAssets.add(assetFromUi);
 
-            //save changes in the csv file TODO in case of saving into a db -> change here
+            //save changes in the csv file
             CsvFileHandler.getInstance().saveAssetsToCsvFile(this.listOfAllAssets);
 
-            //DEBUG console output if saved successfully TODO output to gui?
+            //DEBUG console output if saved successfully
             System.out.println(USER_MSG_SAVE_SUCCESS);
 
             resetCustomerDataTextFields();

@@ -12,12 +12,12 @@ public class LvAssetsCell extends ListCell<Asset> {
 
         if (empty || assetToShowInCell == null) {
 
-
             this.setText(null);
 
             this.setGraphic(null);
         } else {
-            this.setText(assetToShowInCell.getAssetName() + assetToShowInCell.getAssetID());
+            //define the values which are to be displayed in the List view
+            this.setText("ID: "+assetToShowInCell.getAssetID() + "  Name: " +assetToShowInCell.getAssetName());
         }
 
     }

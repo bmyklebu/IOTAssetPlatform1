@@ -1,1 +1,4 @@
 1;Tractor PAF;Land machine;90;2;1.1.1.1;
+2;Tractor Petershausen;Land machine;90;2;1.1.1.2;
+3;CNC Machine;Machine;120;10;2.2.2.3;
+4;Kuka Robot 85276;Machine;120;10;2.2.2.3;

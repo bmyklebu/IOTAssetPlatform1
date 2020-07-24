@@ -8,8 +8,8 @@
         <TitledPane fx:id="tpCustomerdata" prefHeight="800.0" prefWidth="1600.0" text="Asset data">
             <HBox spacing="5">
                 <VBox alignment="TOP_LEFT" prefWidth="800" spacing="5">
-                    <Label fx:id="lblAllCustomers" alignment="CENTER" minWidth="800" prefWidth="800" text="All Asset data" />
-                    <ListView fx:id="lvAssets" minHeight="400" minWidth="800" prefHeight="400" prefWidth="800" />
+                    <Label fx:id="lblAllCustomers" alignment="CENTER" minWidth="500" prefWidth="500" text="All Asset data" />
+                    <ListView fx:id="lvAssets" minHeight="400" minWidth="500" prefHeight="400" prefWidth="500" />
                 </VBox>
                 <VBox alignment="BASELINE_RIGHT" minHeight="400" prefWidth="800" spacing="5">
 
@@ -20,7 +20,6 @@
 
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
                         <TextField fx:id="txtAssetType" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset Type" />
-
                         <TextField fx:id="txtAssetMaxTemp" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset max temp" />
                     </HBox>
 
@@ -31,14 +30,14 @@
 
 
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
-                        <Button fx:id="btnSubmitAsset" minWidth="150" onAction="#onClickSubmitAsset" prefWidth="150" text="Save Asset data" />
-                        <Button fx:id="btnDeleteCustomer" minWidth="150" onAction="#onClickDeleteAsset" prefWidth="150" text="Delete Asset data" />
-                        <Button fx:id="btnChangeCustomer" minWidth="150" onAction="#onClickChangeAsset" prefWidth="150" text="Change Asset data" />
-                        <Button fx:id="btnShowDatapointValues" minWidth="150" onAction="#displayDatapointValues" prefWidth="150" text="show datapoint values" />
+                        <Button fx:id="btnSubmitAsset" minWidth="150" onAction="#onClickSubmitAsset" prefWidth="150" style="-fx-background-color: #3dc4f5;" text="Save Asset data" />
+                        <Button fx:id="btnDeleteCustomer" minWidth="150" onAction="#onClickDeleteAsset" prefWidth="150" style="-fx-background-color: #3dc4f5;" text="Delete Asset data" />
+                        <Button fx:id="btnChangeCustomer" minWidth="150" onAction="#onClickChangeAsset" prefWidth="150" style="-fx-background-color: #3dc4f5;" text="Change Asset data" />
+                        <Button fx:id="btnShowDatapointValues" minWidth="150" onAction="#displayDatapointValues" prefWidth="150" style="-fx-background-color: #3dc4f5;" text="show datapoint values" />
                     </HBox>
 
-                    <HBox alignment="CENTER" prefWidth="800" minWidth="800" prefHeight="400" minHeight="400" spacing="5">
-                        <Label text="values here" fx:id="txtDatapointValues" minHeight="400" minWidth="400"/>
+                    <HBox alignment="CENTER" minHeight="400" minWidth="800" prefHeight="400" prefWidth="800" spacing="5">
+                        <Label fx:id="txtDatapointValues" minHeight="400" minWidth="400" text="values here" />
                     </HBox>
 
 
@@ -48,10 +47,10 @@
 
         <TitledPane text="Generate Test Data points">
             <VBox alignment="BASELINE_RIGHT" minHeight="400" prefWidth="800" spacing="5">
-                <HBox>
+                <HBox spacing="5">
                     <TextField fx:id="txtAssetIDTestGenerator" minWidth="150" prefWidth="150" promptText="Enter Asset ID" />
                     <TextField fx:id="txtAssetMaxTempTestGenerator" minWidth="150" prefWidth="150" promptText="Enter Max Temp limit" />
-                    <Button fx:id="btnCreateDatapoint" minWidth="200" onAction="#onClickCreateDatapoints" prefWidth="200" text="Create Test Datapoints" />
+                    <Button fx:id="btnCreateDatapoint" minWidth="200" onAction="#onClickCreateDatapoints" prefWidth="200" style="-fx-background-color: #3dc4f5;" text="Create Test Datapoints" />
                 </HBox>
             </VBox>
         </TitledPane>

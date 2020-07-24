@@ -71,6 +71,7 @@ public class DatapointFileHandler {
                         //compare AssetID in CSV file line to AssetId that is selected
                         if (strComparisonID.equals(paramAssetID)){
                             strReturnValues += strReadCsvLine + "\n";
+                            //set flag if ID's match used in else branch
                             iStop  = 1;
                         }else{
                             if(iStop != 1)
@@ -143,7 +144,7 @@ public class DatapointFileHandler {
                 //output if successful
 
             }
-            System.out.println(iRepetitions+ " test dataponts created for Asset: "+iMachineNo);
+            System.out.println(iRepetitions+ " test Dataponts created for Asset: "+iMachineNo);
 
         } catch (Exception e) {
             e.getStackTrace();
