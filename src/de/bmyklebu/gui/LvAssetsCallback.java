@@ -1,12 +1,11 @@
 package de.bmyklebu.gui;
 
-
 import de.bmyklebu.model.Asset;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
-public class LvCustomersCallback implements Callback <ListView<Asset>, ListCell<Asset>>{
+public class LvAssetsCallback implements Callback <ListView<Asset>, ListCell<Asset>>{
     /**
      * The <code>call</code> method is called when required, and is given a
      * single argument of type P, with a requirement that an object of type R
@@ -20,6 +19,6 @@ public class LvCustomersCallback implements Callback <ListView<Asset>, ListCell<
      */
     @Override
     public ListCell<Asset> call(ListView<Asset> param) {
-        return new LvCustomersCell();
+        return new LvAssetsCell();
     }
 }

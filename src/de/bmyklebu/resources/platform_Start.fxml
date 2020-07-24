@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_LEFT" maxHeight="800.0" maxWidth="1620.0" minHeight="800" minWidth="1620.0" prefHeight="800.0" prefWidth="1620.0"
-      xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="de.bmyklebu.gui.UiController">
+<VBox alignment="TOP_LEFT" maxHeight="800.0" maxWidth="1620.0" minHeight="800" minWidth="1620.0" prefHeight="800.0" prefWidth="1620.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.bmyklebu.gui.UiController">
     <children>
         <TitledPane fx:id="tpCustomerdata" prefHeight="800.0" prefWidth="1600.0" text="Asset data">
             <HBox spacing="5">
                 <VBox alignment="TOP_LEFT" prefWidth="800" spacing="5">
-                    <Label fx:id="lblAllCustomers" alignment="CENTER" minWidth="800" prefWidth="800" text="All Asset data" />
-                    <ListView fx:id="lvAssets" minHeight="400" minWidth="800" prefHeight="400" prefWidth="800" />
+                    <Label fx:id="lblAllCustomers" alignment="CENTER" minWidth="500" prefWidth="500" text="All Asset data" />
+                    <ListView fx:id="lvAssets" minHeight="400" minWidth="500" prefHeight="400" prefWidth="500" />
                 </VBox>
                 <VBox alignment="BASELINE_RIGHT" minHeight="400" prefWidth="800" spacing="5">
 
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
-
                         <TextField fx:id="txtAssetId" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset ID" />
                         <TextField fx:id="txtAssetName" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset Name" />
                     </HBox>
 
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
                         <TextField fx:id="txtAssetType" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset Type" />
-
                         <TextField fx:id="txtAssetMaxTemp" maxWidth="260.0" minWidth="260.0" prefWidth="260.0" promptText="Asset max temp" />
                     </HBox>
 
@@ -32,15 +27,32 @@
                         <TextField fx:id="txtAssetMinTemp" minWidth="260" prefWidth="260" promptText="Asset min temp" />
                         <TextField fx:id="txtAssetIP" minWidth="260" prefWidth="260" promptText="Asset IP" />
                     </HBox>
+
+
                     <HBox alignment="BASELINE_RIGHT" prefWidth="800" spacing="5">
-                        <CheckBox fx:id="cbAssetState" minWidth="260" prefWidth="260"  />
+                        <Button fx:id="btnSubmitAsset" minWidth="150" onAction="#onClickSubmitAsset" prefWidth="150" style="-fx-background-color: #3dc4f5;" text="Save Asset data" />
+                        <Button fx:id="btnDeleteCustomer" minWidth="150" onAction="#onClickDeleteAsset" prefWidth="150" style="-fx-background-color: #3dc4f5;" text="Delete Asset data" />
+                        <Button fx:id="btnChangeCustomer" minWidth="150" onAction="#onClickChangeAsset" prefWidth="150" style="-fx-background-color: #3dc4f5;" text="Change Asset data" />
+                        <Button fx:id="btnShowDatapointValues" minWidth="150" onAction="#displayDatapointValues" prefWidth="150" style="-fx-background-color: #3dc4f5;" text="show datapoint values" />
                     </HBox>
 
-                    <Button fx:id="btnSubmitCustomer" minWidth="525" prefWidth="525" onAction="#onClickSubmitCustomer" text="Save Asset data" />
-                    <Button fx:id="btnDeleteCustomer" minWidth="525" prefWidth="525" onAction="#onClickDeleteProduct" text="Delete Asset data" />
-                    <Button fx:id="btnChangeCustomer" minWidth="525" prefWidth="525" onAction="#onClickChangeProduct" text="Change Asset data" />
+                    <HBox alignment="CENTER" minHeight="400" minWidth="800" prefHeight="400" prefWidth="800" spacing="5">
+                        <Label fx:id="txtDatapointValues" minHeight="400" minWidth="400" text="values here" />
+                    </HBox>
+
+
                 </VBox>
             </HBox>
+        </TitledPane>
+
+        <TitledPane text="Generate Test Data points">
+            <VBox alignment="BASELINE_RIGHT" minHeight="400" prefWidth="800" spacing="5">
+                <HBox spacing="5">
+                    <TextField fx:id="txtAssetIDTestGenerator" minWidth="150" prefWidth="150" promptText="Enter Asset ID" />
+                    <TextField fx:id="txtAssetMaxTempTestGenerator" minWidth="150" prefWidth="150" promptText="Enter Max Temp limit" />
+                    <Button fx:id="btnCreateDatapoint" minWidth="200" onAction="#onClickCreateDatapoints" prefWidth="200" style="-fx-background-color: #3dc4f5;" text="Create Test Datapoints" />
+                </HBox>
+            </VBox>
         </TitledPane>
     </children>
 
